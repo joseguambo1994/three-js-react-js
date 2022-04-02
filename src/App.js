@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
+
 import './App.css';
+import CameraController from './CameraController/CameraController';
 
 function Box(props) {
   // This reference gives us direct access to the THREE.Mesh object
@@ -57,6 +59,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <Canvas style={{ flex: 1, backgroundColor: 'blue' }}>
+           <CameraController />
           <ambientLight />
           <pointLight position={[10, 10, 10]} />
           <Box position={[-2.2, 0, 0]} />
