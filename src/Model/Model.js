@@ -7,7 +7,7 @@ import { useGLTF, useAnimations } from "@react-three/drei";
 
 export default function Model(props) {
   const group = useRef();
-  const { nodes, materials, animations } = useGLTF("/robot2.glb");
+  const { nodes, materials, animations } = useGLTF("/robotBlue.gltf");
   const { actions } = useAnimations(animations, group);
   return (
     <group ref={group} {...props} dispose={null}>
@@ -1062,4 +1062,5 @@ export default function Model(props) {
   );
 }
 
-useGLTF.preload("/robot2.glb");
+useGLTF.preload("/robotBlue.gltf");
+
