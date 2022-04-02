@@ -55,7 +55,7 @@ function Sphere(props) {
 
 function App() {
 
-  const [objectPosition, setObjectPosition] = useState([10, 10, 10]);
+  // const [objectPosition, setObjectPosition] = useState([10, 10, 10]);
 
 
   return (
