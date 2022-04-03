@@ -21,7 +21,9 @@ function SphereTexture() {
       <ambientLight intensity={0.2} />
       <directionalLight />
       <CustomCube position={[1.5, 1.5, 1.5]} color={'purple'} colorHovered={'yellow'} />
-      <CustomCube position={[1.5, -1.5, 1.5]} color={'purple'} colorHovered={'yellow'} />
+      <CustomCube position={[1.5, -1.5, 1.5]} color={'purple'} colorHovered={'yellow'} 
+        url={'http://werobot.academy/'}
+      />
       <Model position={[-2, -2, -2]} />
 
       <mesh>
