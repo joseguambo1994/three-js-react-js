@@ -1,19 +1,19 @@
 import React, { Suspense } from "react";
 import { Canvas, useLoader } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
+import { OrbitControls, Sky, Stars, Cloud } from "@react-three/drei";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
 import Model from "../Model/Model";
 import CustomCube from "../CustomCube/CustomCube";
 
- const name = (type) => `WeRobotLogo.jpg`;
+const name = (type) => `WeRobotLogo.jpg`;
 
 function SphereTexture() {
   const [
     colorMap,
-     aoMap
+    aoMap
   ] = useLoader(TextureLoader, [
     name("Color"),
-     name("AmbientOcclusion")
+    name("AmbientOcclusion")
   ]);
 
   return (
@@ -21,7 +21,7 @@ function SphereTexture() {
       <ambientLight intensity={0.2} />
       <directionalLight />
       <CustomCube position={[1.5, 1.5, 1.5]} color={'purple'} colorHovered={'yellow'} />
-      <CustomCube position={[1.5, -1.5, 1.5]} color={'purple'} colorHovered={'yellow'} 
+      <CustomCube position={[1.5, -1.5, 1.5]} color={'purple'} colorHovered={'yellow'}
         url={'http://werobot.academy/'}
       />
       <Model position={[-2, -2, -2]} />
@@ -38,13 +38,28 @@ function SphereTexture() {
   );
 }
 
-export default function SphereTextureCanvas() {
+export default function SphereTextureCanvas(props) {
   return (
-      <Canvas style={{ flex: 1, minHeight: '100vh', backgroundColor: 'green' }} >
-        <Suspense fallback={null}>
-          <SphereTexture />
-          <OrbitControls autoRotate />
-        </Suspense>
-      </Canvas>
+    <Canvas style={{ flex: 1, minHeight: '100vh', backgroundColor: 'green' }} >
+      <Suspense fallback={null}>
+        <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade />
+        <Sky
+          distance={450000}
+          sunPosition={[5, 1, 8]}
+          inclination={0}
+          azimuth={0.25}
+          {...props}
+        />
+        <Cloud
+          opacity={0.5}
+          speed={0.4} // Rotation speed
+          width={5} // Width of the full cloud
+          depth={1.5} // Z-dir depth
+          segments={10} // Number of particles
+        />
+        <SphereTexture />
+        <OrbitControls autoRotate />
+      </Suspense>
+    </Canvas>
   );
 }
