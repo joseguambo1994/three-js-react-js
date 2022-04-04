@@ -4,6 +4,7 @@ import { OrbitControls, Sky, Stars, Cloud } from "@react-three/drei";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
 import Model from "../Model/Model";
 import CustomCube from "../CustomCube/CustomCube";
+import LedModel from "../LedModel/LedModel";
 
 const name = (type) => `WeRobotLogo.jpg`;
 
@@ -20,11 +21,12 @@ function SphereTexture() {
     <>
       <ambientLight intensity={0.2} />
       <directionalLight />
-      <CustomCube position={[1.5, 1.5, 1.5]} color={'purple'} colorHovered={'yellow'} />
-      <CustomCube position={[1.5, -1.5, 1.5]} color={'purple'} colorHovered={'yellow'}
+      <CustomCube position={[2.5, 2.5, 3.5]} color={'purple'} colorHovered={'yellow'} />
+      <CustomCube position={[2.5, -2.5, 3.5]} color={'purple'} colorHovered={'yellow'}
         url={'http://werobot.academy/'}
       />
-      <Model position={[-2, -2, -2]} />
+      <Model position={[-3, -3, -3]} />
+      <LedModel position={[4, -3, -4]} />
 
       <mesh>
         <sphereBufferGeometry args={[1, 100, 100]} />
